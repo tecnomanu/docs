@@ -1,73 +1,42 @@
-# ✅ Mi setup de la TODO List de Cursor (con prompts)
+# 🤖 Cómo automatizo mi laburo con agentes IA
 
-Comentaste **"todo"** 🙌 Acá te dejo cómo uso la **TODO List del agente de Cursor**: la función donde el agente **arma la lista de tareas de una feature y las va tildando solo** mientras programa. Menos alt-tab entre editor y gestor de tareas, más foco en la lógica.
+Comentaste **"todo"** 🙌
 
----
-
-## Qué es
-Cuando le pedís al **Agent** de Cursor algo que tiene varios pasos, arma una **lista de to-dos** en el panel y la va marcando en tiempo real a medida que completa cada parte. Lo bueno: la lista queda **atada a tu código**, no en un post-it aparte.
-
-Para que aparezca sí o sí, el truco es **pedírselo explícito** en el prompt.
+Acá te muestro cómo tengo armado el sistema para que la IA haga el trabajo pesado: orquestar agentes de código y generar contenido casi solo.
 
 ---
 
-## Setup en 3 pasos
+## 1. El cerebro: orquestar agentes con APX
 
-### 1. Activá el modo Agent
-Abrí el chat (`⌘/Ctrl + L`) y pasá el chat a modo **Agent** (arriba del input). Ese modo es el que planifica y ejecuta por pasos.
+En vez de saltar entre mil herramientas, uso **APX** como capa que **orquesta varios agentes/CLIs de código** (Claude Code, Codex, Gemini, etc.) desde un solo lugar. Le delego un objetivo, corre **rutinas** y coordina todo con un **daemon local**.
 
-### 2. Pedile el plan como TODO (el prompt clave)
-No arranques con "hacé X". Arrancá pidiendo el plan:
+La idea: yo defino el *qué*, y el sistema reparte el *cómo* entre los agentes.
 
-```text
-Antes de tocar código, armá una TODO list con los pasos necesarios
-para [describí la feature]. Mostrámela y esperá mi OK.
-Después ejecutá los pasos uno por uno y andá tildando cada ítem
-a medida que lo terminás.
-```
-
-Así te muestra la lista, la aprobás, y recién ahí ejecuta tildando en vivo.
-
-### 3. Mantené la lista viva
-Mientras trabaja, si algo cambia:
-
-```text
-Actualizá la TODO: marcá lo hecho, agregá los pasos nuevos que
-descubriste y dejá pendientes los que faltan.
-```
+> ⚙️ *Si querés que arme una guía/repo público de APX para que lo puedas probar, avisame y lo subo.*
 
 ---
 
-## Prompts que uso seguido
+## 2. Generar contenido en serie (para hacerme publicidad casi solo)
 
-**Para features nuevas:**
-```text
-Actuá como tech lead. Descomponé "[feature]" en una TODO list de
-tareas chicas y verificables (máximo ~7). Ordenalas por dependencia.
-No escribas código hasta que apruebe la lista.
-```
+Con dos proyectos open source cierro el círculo de "crear una vez, mostrar muchas":
 
-**Para bugs:**
-```text
-Armá una TODO para reproducir, aislar y arreglar este bug.
-Primer ítem: reproducirlo con un test que falle. Último ítem:
-que el test pase. Tildá a medida que avanzás.
-```
+### 🎬 framevox — videos publicitarios
+Videos promocionales con composiciones **HyperFrames** + **voz IA** (Gemini, Piper, ElevenLabs).
+👉 https://github.com/tecnomanu/framevox
 
-**Para refactors grandes:**
-```text
-Hacé una TODO de refactor incremental: cada ítem tiene que dejar
-el proyecto compilando y los tests en verde. Nada de cambios masivos
-de una. Andá tildando y avisá si algún paso rompe algo.
-```
+### 📹 video-docs-builder — tutoriales automáticos
+Graba el navegador con Playwright, le pone **narración TTS** (Piper/ElevenLabs/OpenAI) y arma el MP4 con FFmpeg. Ideal para mostrar una app sin grabar a mano.
+👉 https://github.com/tecnomanu/video-docs-builder
 
 ---
 
-## Por qué me cambió el flujo
-- El plan queda **a la vista** y lo apruebo antes de que toque nada.
-- Si me distraigo, **retomo** viendo qué quedó tildado.
-- Es una forma barata de que el agente **no se mande cambios de más**: se ata a la lista.
+## 3. El combo completo
+1. **APX** orquesta a los agentes que construyen y documentan el proyecto.
+2. **video-docs-builder** genera el tutorial en video.
+3. **framevox** arma la pieza publicitaria con voz IA.
+4. Publico, y sigo con lo siguiente.
 
-Guardá el reel para tu próxima sesión de codeo, y si te sirvió pasáselo a alguien que todavía vive pegado a los post-its 😉
+Menos tareas manuales, más foco en construir.
 
-¿Dudas? Respondeme el DM 🙌
+Si te copa alguno de los repos, una ⭐ me ayuda un montón 🙌
+Y si querés que profundice en alguna parte, escribime y lo vemos.

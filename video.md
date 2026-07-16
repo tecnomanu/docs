@@ -1,7 +1,8 @@
 # 🎬 Cómo hago videos publicitarios con IA
 
-Si llegaste acá es porque comentaste **"video"** en Instagram. Bienvenido 🙌
-Este es el detrás de escena de cómo armo los videos que ves en la cuenta, con dos caminos según lo que quieras lograr.
+Comentaste **"video"** 🙌
+
+Acá va el detrás de escena de cómo armo los videos, con dos caminos según lo que quieras lograr.
 
 ---
 
@@ -67,4 +68,4 @@ Genera videos-tutorial solos: **graba el navegador** con Playwright, le pone **n
 - Querés reels de producto en serie → **framevox**.
 - Querés documentar/mostrar una app → **video-docs-builder**.
 
-Cualquier duda, respondeme el DM y lo vemos 🙌
+Cualquier duda, escribime y lo vemos 🙌

@@ -32,11 +32,15 @@ Cuando termina, te da un panel web en `http://IP-DE-TU-SERVIDOR:3000`. Creá tu 
 3. Build: la mayoría de las webs de Lovable son **Nixpacks** o **Dockerfile** (Dokploy lo detecta solo). Si es una app Vite/React, el build suele ser `npm run build` y sirve la carpeta `dist`.
 4. **Deploy**. En un par de minutos tenés la web corriendo en una URL interna.
 
-## Paso 4 — Conectá tu dominio .com.ar
-1. Registrá/entrá a tu dominio en **NIC.ar**.
-2. Apuntá un registro **A** de tu dominio a la **IP de tu servidor**.
-   *(Para `www`, un CNAME al dominio raíz.)*
-3. En Dokploy → tu app → **Domains** → agregá `tudominio.com.ar` y activá **HTTPS (Let's Encrypt)**. Dokploy saca el certificado solo.
+## Paso 4 — Conectá tu dominio .com.ar (con Cloudflare de intermediario)
+Así lo hago en el video: el dominio vive en **nic.ar**, pero uso **Cloudflare** en el medio para el DNS, el HTTPS y esconder la IP del servidor.
+
+1. Registrá tu dominio **.com.ar** en **[nic.ar](https://nic.ar)** (gratis con CUIT/CUIL).
+2. Creá una cuenta en **Cloudflare** (plan Free) y agregá tu dominio.
+3. Cloudflare te da **2 nameservers**. Volvé a **nic.ar → tu dominio → Delegación** y reemplazá los nameservers por los de Cloudflare. *(Tarda un rato en propagar.)*
+4. En **Cloudflare → DNS** creá un registro **A**: `tudominio.com.ar` → **IP de tu servidor**, con el **proxy (nube naranja) activado**.
+5. En **Cloudflare → SSL/TLS** poné el modo en **Full**.
+6. En **Dokploy → tu app → Domains** agregá `tudominio.com.ar`.
 
 ## Paso 5 — Probá
 Esperá unos minutos a que propague el DNS y entrá a `https://tudominio.com.ar`. 🎉
@@ -48,4 +52,4 @@ Esperá unos minutos a que propague el DNS y entrá a `https://tudominio.com.ar`
 - Cada vez que hagas push al repo (desde Lovable o a mano), Dokploy puede **redeployar solo** (activá auto-deploy).
 - Guardá este doc: el mismo flujo te sirve para **cualquier** app, no solo Lovable.
 
-¿Te trabaste en algún paso? Respondeme el DM y lo destrabamos 🙌
+¿Te trabaste en algún paso? Escribime y lo destrabamos 🙌
