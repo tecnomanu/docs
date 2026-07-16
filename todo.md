@@ -6,13 +6,18 @@ Acá te muestro cómo tengo armado el sistema para que la IA haga el trabajo pes
 
 ---
 
-## 1. El cerebro: orquestar agentes con APX
+## 1. La base: contexto compartido con APC + orquestación con APX
 
-En vez de saltar entre mil herramientas, uso **APX** como capa que **orquesta varios agentes/CLIs de código** (Claude Code, Codex, Gemini, etc.) desde un solo lugar. Le delego un objetivo, corre **rutinas** y coordina todo con un **daemon local**.
+Todos mis repos usan **APC (Agent Project Context)**, una convención abierta para guardar el contexto del proyecto para IA en una carpeta compartida `.apc/`. La idea es simple: *un proyecto, una sola capa de contexto* — en vez de duplicarlo entre `.claude/`, `.cursor/`, `.codex/`, etc.
+
+- 🌐 Web: https://agentprojectcontext.com/
+- 📦 Repo: https://github.com/agentprojectcontext/agentprojectcontext
+
+Arriba de ese contexto uso **APX**: la capa práctica para operar **agentes, rutinas, MCPs, bridges de Telegram, tareas y automatizaciones**. Le delego un objetivo y coordina todo con un daemon local.
+
+- 📦 Repo: https://github.com/agentprojectcontext/apx
 
 La idea: yo defino el *qué*, y el sistema reparte el *cómo* entre los agentes.
-
-> ⚙️ *Si querés que arme una guía/repo público de APX para que lo puedas probar, avisame y lo subo.*
 
 ---
 
